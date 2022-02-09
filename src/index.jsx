@@ -13,9 +13,21 @@ import Freelances from "./pages/Freelances";
 import Header from "./components/Header";
 import Error from "./components/Error";
 
+// on importe la méthode createGlobalStyle du module
+import { createGlobalStyle } from "styled-components";
+
+// on créer un style global
+const GlobalStyle = createGlobalStyle` 
+*{
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+p > img {height: 100%;  width: 100%;
+}`;
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <GlobalStyle />
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />

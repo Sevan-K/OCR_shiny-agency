@@ -4,16 +4,53 @@ import PropTypes from "prop-types";
 // on importe la photo depuis assets
 import DefaultPicture from "../../assets/profile.png";
 
+// on importe le module styled components
+import styled from "styled-components";
+
+// on importe les variables de couleur
+import colors from "../../utils/style/colors";
+
+// on défini le style via une constante
+
+// composant avec style pour le div qui entoure les cartes
+const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: ${colors.backgroundLight};
+  border-radius: 30px;
+  width: 350px;
+  transition: 200ms;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 10px ${colors.shadow};
+  }
+`;
+
+// composant avec style pour le label
+const CardLabel = styled.span`
+  color: #5843e4;
+  font-size: 22px;
+  font-weight: bold;
+`;
+
+// composant avec style pour l'image
+const CardImage = styled.img`
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+`;
+
 // création du composant carte pour freelance
 // Card({ label, title='Sevan K', picture }) (valeur par défaut pour le nom : Sevan K)
 function Card({ label, title, picture }) {
   //  on ajoute du style via l'attribut style
   return (
-    <div style={{ display: "flex", flexDirection: "column", padding: 15 }}>
-      <span>{label}</span>
-      <img src={picture} alt="Freelance" height={80} width={80} />
+    <CardWrapper>
+      <CardLabel>{label}</CardLabel>
+      <CardImage src={picture} alt="Freelance" />
       <span>{title}</span>
-    </div>
+    </CardWrapper>
   );
 }
 

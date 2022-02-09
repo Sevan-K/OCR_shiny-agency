@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 // création du composant
 function Header() {
-    // on créer des lien non pas avec des balises a
+  // on créer des lien non pas avec des balises a
   return (
     <nav>
       <Link to="/">Accueil</Link>
-      <Link to="/survey">Questionnaire</Link>
+      <Link to="/survey/1">Questionnaire</Link>
+      <Link to="/freelances">Freelances</Link>
     </nav>
   );
 }

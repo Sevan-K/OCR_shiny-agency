@@ -16,10 +16,12 @@ import colors from "../../utils/style/colors";
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 50px;
   background-color: ${colors.backgroundLight};
   border-radius: 30px;
-  width: 350px;
+  width: 250px;
   transition: 200ms;
   &:hover {
     cursor: pointer;
@@ -32,12 +34,22 @@ const CardLabel = styled.span`
   color: #5843e4;
   font-size: 22px;
   font-weight: bold;
+  align-self: flex-start;
+`;
+
+// composant avec style pour le titre
+const CardTitle = styled.span`
+  color: black;
+  font-size: 22px;
+  font-weight: normal;
+  align-self: center;
 `;
 
 // composant avec style pour l'image
 const CardImage = styled.img`
-  height: 80px;
-  width: 80px;
+  height: 150px;
+  width: 150px;
+  align-self: center;
   border-radius: 50%;
 `;
 
@@ -49,7 +61,7 @@ function Card({ label, title, picture }) {
     <CardWrapper>
       <CardLabel>{label}</CardLabel>
       <CardImage src={picture} alt="Freelance" />
-      <span>{title}</span>
+      <CardTitle>{title}</CardTitle>
     </CardWrapper>
   );
 }

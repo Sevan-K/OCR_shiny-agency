@@ -10,7 +10,8 @@ import colors from "../../utils/style/colors";
 // on importe l'image
 import darkLogo from "../../assets/dark-logo.png";
 
-import "../../style/dev.css";
+// on importe le styled component global
+import { StyledLink } from "../../utils/style/Atoms";
 
 // composant avec style pour le header
 const StyledHeader = styled.header`
@@ -20,20 +21,9 @@ const StyledHeader = styled.header`
   padding: 20px;
 `;
 
-// composant avec style pour le lien
-const StyledLink = styled(Link)`
-  padding: 15px;
-  color: ${colors.secondary};
-  text-decoration: none;
-  font-size: 18px;
-  ${(props) =>
-    props.$isFullLink &&
-    `color: white; border-radius: 30px; background-color: ${colors.primary};`}
-`;
-
 // composant avec style pour l'image
 const HeaderLogo = styled.p`
-  width: 25%;
+  width: 300px;
 `;
 
 // création du composant
@@ -46,9 +36,9 @@ function Header() {
       </HeaderLogo>
       <nav>
         <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/survey/1">Questionnaire</StyledLink>
-        <StyledLink to="/freelances" $isFullLink>
-          Freelances
+        <StyledLink to="/freelances">Freelances</StyledLink>
+        <StyledLink to="/survey/1" $isFullLink>
+          Faire le test
         </StyledLink>
       </nav>
     </StyledHeader>

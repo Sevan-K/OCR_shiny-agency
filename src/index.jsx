@@ -21,7 +21,7 @@ import Footer from "./components/Footer";
 import "./style/dev.css";
 
 // import du theme provider
-import { ThemeProvider } from "./utils/context/ThemeProvider";
+import { SurveyProvider, ThemeProvider } from "./utils/context";
 
 // import du style global
 import GlobalStyle from "./utils/style/GlobalStyle";
@@ -33,15 +33,17 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <ThemeProvider>
-        <GlobalStyle />
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/survey/:questionNumber" element={<Survey />} />
-          <Route path="/results" element={<Results />} />
-          <Route path="/freelances" element={<Freelances />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
+        <SurveyProvider>
+          <GlobalStyle />
+          <Header />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/survey/:questionNumber" element={<Survey />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/freelances" element={<Freelances />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </SurveyProvider>
         <Footer />
       </ThemeProvider>
     </Router>

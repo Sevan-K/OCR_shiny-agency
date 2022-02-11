@@ -3,7 +3,7 @@
 /* -------------------------------------- */
 import { useContext } from "react";
 import styled from "styled-components";
-import { ThemeContext } from "../../utils/context/ThemeProvider";
+import { ThemeContext } from "../../utils/context";
 import colors from "../../utils/style/colors";
 
 /* ------------------------------------------- */

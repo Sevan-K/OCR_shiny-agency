@@ -4,7 +4,7 @@
 // on importe la méthode createGlobalStyle du module
 import { useContext } from "react";
 import { createGlobalStyle } from "styled-components";
-import { ThemeContext } from "../context/ThemeProvider";
+import { ThemeContext } from "../context";
 
 /* ------------------------------------ */
 /*          Section des styles          */

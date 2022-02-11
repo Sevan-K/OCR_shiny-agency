@@ -2,7 +2,7 @@
 /*          Secrtion des imports          */
 /* -------------------------------------- */
 // on importe le hook useEffect
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // on importe le hook useParams pour utiliser les paramètres d'url
 import { useParams } from "react-router-dom";
 
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 // on importe le module styled components
 import styled from "styled-components";
+import { SurveyContext } from "../../utils/context";
 import { Loader } from "../../utils/style/Atoms";
 
 // on importe les couleurs
@@ -43,22 +44,29 @@ const SurveyTitle = styled.h2`
 
 // coposant avec style pour le container des boutons
 const ButtonContainer = styled.div`
-  width: 50%;
   display: flex;
   justify-content: space-evenly;
-  padding: 30px;
+  padding:50px;
 `;
 
 // coposant avec style pour les boutons
 const StyledButton = styled.button`
-  padding: 15px 50px;
-  border: 1px solid ${colors.backgroundLight};
+  border: none;
+  height: 100px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${colors.backgroundLight};
-  border-radius: 15px;
-  transition: 200ms ease-in-out;
-  &:hover {
-    border: 1px solid ${colors.primary};
-    font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: ${(props) =>
+    props.$isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : "none"};
+  &:first-child {
+    margin-right: 25px;
+  }
+  &:last-of-type {
+    margin-left: 25px;
   }
 `;
 
@@ -83,6 +91,14 @@ function Survey() {
   const [isDataLoading, setDataLoading] = useState(false);
   // on defini le useState pour la gestion des erreurs
   const [error, setError] = useState(null);
+
+  // on utilise le surveyContext pour sauvegarder les réponses
+  const { answers, saveAnswers } = useContext(SurveyContext);
+
+  // fonction pour enregistrer la réponse
+  const saveReply = (answer) => {
+    saveAnswers({ [questionNumber]: answer });
+  };
 
   // useEffect pour lancer l'appel à l'API
   useEffect(() => {
@@ -110,11 +126,15 @@ function Survey() {
     fethSurvey();
   }, []);
 
+  useEffect(() => {
+    console.log("Object with answers", answers);
+  }, [answers]);
+
   // en cas d'erreur on affiche le message d'erreur
   if (error) {
     return <span>Oups il y a eu un problème</span>;
   }
-  
+
   return (
     <MainWrapper>
       <SurveyTitle>Question {questionNumber} </SurveyTitle>
@@ -124,8 +144,22 @@ function Survey() {
         <QuestionContent>{surveyData[questionNumberAsInt]}</QuestionContent>
       )}
       <ButtonContainer>
-        <StyledButton>Oui</StyledButton>
-        <StyledButton>Non</StyledButton>
+        <StyledButton
+          onClick={() => {
+            saveReply(true);
+          }}
+          $isSelected={answers[questionNumberAsInt] === true}
+        >
+          Oui
+        </StyledButton>
+        <StyledButton
+          onClick={() => {
+            saveReply(false);
+          }}
+          $isSelected={answers[questionNumberAsInt] === false}
+        >
+          Non
+        </StyledButton>
       </ButtonContainer>
       <nav>
         {questionNumberAsInt !== 1 && (

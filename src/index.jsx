@@ -1,3 +1,7 @@
+/* -------------------------------------- */
+/*          Secrtion des imports          */
+/* -------------------------------------- */
+
 import React from "react";
 import ReactDOM from "react-dom";
 // on importe le router
@@ -9,38 +13,37 @@ import Survey from "./pages/Survey";
 import Results from "./pages/Results";
 import Freelances from "./pages/Freelances";
 
-// on importe les composants Header, Error
+// on importe les composants Header, Error, Footer
 import Header from "./components/Header";
 import Error from "./components/Error";
-
-// on importe la méthode createGlobalStyle du module
-import { createGlobalStyle } from "styled-components";
+import Footer from "./components/Footer";
 
 import "./style/dev.css";
 
-// on créer un style global
-const GlobalStyle = createGlobalStyle` 
-    *{
-      font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    }
-    p > img {height: 100%;  width: 100%;
-    }
-    body {
-      margin: 0;
-    }`;
+// import du theme provider
+import { ThemeProvider } from "./utils/context/ThemeProvider";
 
+// import du style global
+import GlobalStyle from "./utils/style/GlobalStyle";
+
+/* --------------------------------------------- */
+/*          Components creation section          */
+/* --------------------------------------------- */
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <GlobalStyle />
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/survey/:questionNumber" element={<Survey />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/freelances" element={<Freelances />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <ThemeProvider>
+        <GlobalStyle />
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/survey/:questionNumber" element={<Survey />} />
+          <Route path="/results" element={<Results />} />
+          <Route path="/freelances" element={<Freelances />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Footer />
+      </ThemeProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,7 +1,4 @@
 .dev {
-  padding: 10px;
-}
-
-@-webkit-keyframes identifier {}
-
-@keyframes identifier {}/*# sourceMappingURL=dev.css.map */
+  display: flex;
+  flex-direction: row;
+}/*# sourceMappingURL=dev.css.map */

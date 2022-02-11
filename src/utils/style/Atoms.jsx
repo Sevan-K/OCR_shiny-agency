@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import colors from "./colors";
 
-/* ------------------------------------- */
-/*          Secrtion des styles          */
-/* ------------------------------------- */
+/* ------------------------------------ */
+/*          Section des styles          */
+/* ------------------------------------ */
 
 // style général pour les liens
 export const StyledLink = styled(Link)`
@@ -22,6 +22,8 @@ export const StyledLink = styled(Link)`
     border-radius: 30px; 
     background-color: ${colors.primary};`}
 `;
+
+
 // style pour le loader
 const rotate = keyframes`
 from {

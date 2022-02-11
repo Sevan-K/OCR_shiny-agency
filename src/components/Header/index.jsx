@@ -1,17 +1,19 @@
-// on importe Link depuis react router
-import { Link } from "react-router-dom";
+/* -------------------------------------- */
+/*          Secrtion des imports          */
+/* -------------------------------------- */
 
 // on importe le module styled components
 import styled from "styled-components";
-
-// on importe les couleurs
-import colors from "../../utils/style/colors";
 
 // on importe l'image
 import darkLogo from "../../assets/dark-logo.png";
 
 // on importe le styled component global
 import { StyledLink } from "../../utils/style/Atoms";
+
+/* ------------------------------------------- */
+/*          Styled components section          */
+/* ------------------------------------------- */
 
 // composant avec style pour le header
 const StyledHeader = styled.header`
@@ -25,6 +27,10 @@ const StyledHeader = styled.header`
 const HeaderLogo = styled.p`
   width: 300px;
 `;
+
+/* --------------------------------------------- */
+/*          Components creation section          */
+/* --------------------------------------------- */
 
 // création du composant
 function Header() {

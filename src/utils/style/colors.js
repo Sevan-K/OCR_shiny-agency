@@ -8,6 +8,8 @@ const colors = {
   secondary: "#8186A0",
   backgroundLight: "#F9F9FC",
   shadow: "#e2e3e9",
+  backgroundDark: '#4F4C6B',
+  dark: '#2F2E41',
 };
 
 // on exporte l'objet pour pouvoir l'utiliser

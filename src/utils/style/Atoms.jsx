@@ -12,7 +12,7 @@ import colors from "./colors";
 // style général pour les liens
 export const StyledLink = styled(Link)`
   padding: 10px 15px;
-  color: #8186a0;
+  color: ${({theme})=> theme==="light" ? colors.secondary:"#fff"};
   text-decoration: none;
   font-size: 18px;
   text-align: center;
